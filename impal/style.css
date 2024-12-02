@@ -1,0 +1,888 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(#F1FAFF, #CBE4FF);
+}
+
+.sidebar {
+    width: 270px; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 100vh; 
+    background: #151A2D;
+    z-index: 1000; 
+    transition: 0.4s ease; 
+}
+
+.sidebar.collapsed {
+    width: 85px;
+}
+
+.sidebar-header{
+    position: relative;
+    display: flex;
+    padding: 25px 20;
+    margin-bottom: 35px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-header .header-logo img{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    border-radius: 50%;
+}
+
+
+
+.sidebar-header .toggler{
+    position: absolute;
+    right: 20px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    color: #151A2D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    background: #fff;
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-header .toggler{
+    transform: translate(-4px, 65px);
+}
+
+.sidebar-header .toggler:hover{
+    background: #dde4fb;
+}
+
+.sidebar-header .toggler span{
+    font-size: 1.75rem;
+}
+
+.sidebar.collapsed .sidebar-header .toggler span {
+    transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-list{
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    padding: 0 15px;
+    flex-direction: column;
+    transform: translateY(15px);
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-nav .primary-nav{
+    transform: translateY(65px);
+}
+
+.sidebar-nav .nav-link{
+    color: #fff;
+    display: flex;
+    gap: 12px;
+    white-space: nowrap;
+    border-radius: 8px;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .nav-link:hover {
+    color: #151A2D;
+    background: #fff;
+}
+
+.sidebar-nav .nav-link .nav-label{
+    transition: opacity 0.4s ease;
+}
+
+
+.sidebar.collapsed .sidebar-nav .nav-link .nav-label{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar-nav .nav-item{
+    position: relative;
+}
+
+.sidebar-nav .nav-tooltip{
+    position: absolute;
+    top: -10px;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    left: calc(100% + 25px);
+    color: #151A2D;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #fff;
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    transition: 0s;
+}
+
+.sidebar.collapsed .sidebar-nav .nav-tooltip {
+    display: block;
+}
+
+.sidebar-nav .nav-item:hover .nav-tooltip{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(50%);
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .secondary-nav{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+
+
+
+
+/* logo */
+.logo-section{
+    width: 100%;
+    height: 30vh;
+    background-color: #707070;
+    flex-direction: column; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo-section h2{
+    font-size: 2.5rem;
+    color: #FFFFFF; 
+    margin-bottom: 10px; 
+}
+
+.logo-section p {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.logo-section .fa-solid{
+    font-size: 6rem;
+    color: #2CF3DB;
+}
+
+#btn-3{
+    width: 200px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: #2CF3DB;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-align: center;
+}
+
+#btn-3:hover{
+    background:rgba(118, 32, 32, 0.06);
+}
+
+.filter-container {
+    display: flex;
+    gap: 15px; 
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f5f7fb; 
+    border-radius: 10px;
+    width: fit-content; 
+    margin: 25px auto; 
+}
+
+.filter-container div, 
+.filter-container select, 
+.filter-container button {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #666666;
+    cursor: pointer;
+}
+
+.filter-container div input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 150px; 
+    font-size: 0.95rem;
+    color: #666666;
+}
+
+.filter-container div input::placeholder {
+    color: #999999; 
+}
+
+.filter-container div .icon {
+    margin-right: 10px; 
+    font-size: 1.2rem;
+    color: #007bff; 
+}
+
+.filter-container button {
+    background-color: #a2001a; 
+    color: #ffffff; 
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.filter-container button:hover {
+    background-color: #870017; 
+}
+
+.filter-container .small-button {
+    background-color: #fcecec; 
+    border: none;
+    color: #a2001a;
+    font-weight: bold;
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.section-2{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.modal {
+    display: none; /* Defaultnya disembunyikan */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.price-filter {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.price-filter label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.price-filter input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#apply-filter {
+    background-color: #a2001a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#apply-filter:hover {
+    background-color: #870017;
+}
+
+#product1 {
+    text-align: center;
+    margin: 20px auto;
+}
+
+#product1 .pro-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+
+#product1 .pro {
+    width: 250px; 
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+#product1 .pro:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.location-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7); 
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+
+#product1 .pro .des {
+    padding: 15px;
+    text-align: left;
+}
+
+#product1 .pro .des h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#product1 .pro .des p {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+#product1 .pro .des h4 {
+    font-size: 16px;
+    color: #15A927;
+    font-weight: bold;
+}
+
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+
+.location-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6); 
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.location-overlay i {
+    font-size: 12px;
+    color: #ff9800; 
+}
+
+.pro .like-btn {
+    position: absolute; /* Pastikan posisi absolut */
+    top: 15px; /* Jarak dari atas */
+    right: 15px; /* Jarak dari kanan */
+    font-size: 24px; /* Ukuran ikon */
+    color: #ff4d4d; /* Warna default */
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s; /* Efek transisi */
+}
+
+.pro .like-btn:hover {
+    transform: scale(1.2); /* Membesar saat hover */
+    color: #ff0000; /* Warna berubah saat hover */
+}
+
+.pro .like-btn.active {
+    color: #e60023; /* Warna merah saat disukai */
+}
+
+/* Jangan ubah struktur .location-overlay */
+.location-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6); 
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Ukuran gambar */
+    overflow: hidden;
+}
+
+
+
+/* Login / Daftar */
+
+.container2 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e8f0ff; /* Warna latar belakang */
+}
+
+.grat-container {
+    text-align: center;
+    background-color: #b8d4ff; /* Warna latar belakang logo */
+    width: 100%;
+    border-radius: 10px 10px 0 0; /* Membuat sudut atas melengkung */
+}
+
+.form {
+    width: 100%;
+    max-width: 380px; /* Menurunkan lebar maksimum form */
+    padding: 25px; /* Mengurangi padding */
+    border-radius: 0 0 10px 10px; /* Sudut bawah melengkung */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menurunkan intensitas bayangan */
+}
+
+.form.signup {
+    margin: 50px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.forms.show-signup .form.signup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.forms.show-signup .form.login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.head {
+    font-size: 24px; /* Mengurangi ukuran font judul */
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
+
+form {
+    margin-top: 25px; /* Mengurangi margin atas */
+}
+
+.field {
+    position: relative;
+    height: 45px; /* Mengurangi tinggi input field */
+    width: 100%;
+    margin-top: 15px; /* Mengurangi jarak antar field */
+    border-radius: 6px;
+}
+
+.field input,
+.field button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 14px; /* Mengurangi ukuran font */
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.field input {
+    padding: 0 12px; /* Mengurangi padding dalam input */
+    border: 1px solid #cacaca;
+    font-size: 14px; /* Mengurangi ukuran font dalam input */
+}
+
+.field input:focus {
+    border-color: #0171d3;
+    outline: none;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px; /* Menurunkan ukuran ikon */
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.field button {
+    background-color: #0171d3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px; /* Mengurangi ukuran font button */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.field button:hover {
+    background-color: #0167c1;
+}
+
+.form-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-link span,
+.form-link a {
+    font-size: 13px; /* Mengurangi ukuran font link */
+    font-weight: 400;
+    color: #232836;
+}
+
+.form a {
+    color: #0171d3;
+    text-decoration: none;
+}
+
+.form-content a:hover {
+    text-decoration: underline;
+}
+
+.grat {
+    background-color: #b8d4ff;
+    width: 100%;
+    max-width: 380px; /* Sama dengan lebar form */
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.grat img {
+    width: 100%; /* Mengurangi ukuran logo */
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+/* notifikasi */
+.notification-container {
+    margin: auto; /* Pusatkan konten */
+    max-width: 600px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.notification-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.notification-item .icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.notification-content h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.notification-content p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+/* wallet */
+.wallet-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 100px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.wallet-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #232836;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Wallet Options */
+.wallet-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Wallet Card */
+.wallet-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f3f5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s;
+    cursor: pointer;
+}
+
+.wallet-card:hover {
+    background-color: #e8eef7;
+    transform: scale(1.02);
+}
+
+/* Wallet Icon */
+.wallet-icon {
+    font-size: 40px;
+    color: #0171d3;
+    margin-right: 15px;
+}
+
+/* Wallet Info */
+.wallet-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #232836;
+}
+
+.wallet-info p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* calender */
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    max-width: 600px;
+    height: 80vh; /* Membuat container cukup tinggi agar kalender terpusat secara vertikal */
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Memastikan calendar-container berada di tengah */
+}
+
+.calendar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#calendar-days div {
+    padding: 10px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#calendar-days .day-header {
+    font-weight: bold;
+    background-color: #ddd;
+}
+
+#current-time {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar video sesuai dengan proporsi layar */
+    z-index: -1; /* Letakkan di belakang konten lainnya */
+}
+
+.contentvid {
+    position: relative;
+    z-index: 1; /* Konten tetap berada di atas video */
+    text-align: center;
+    color: #fff; /* Warna teks putih untuk kontras */
+    margin-top: 20%;
+    font-family: Arial, sans-serif;
+}
+
+.popup-container {
+    display: none; /* Default tidak terlihat */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup-content h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.popup-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background: #0056b3;
+}
